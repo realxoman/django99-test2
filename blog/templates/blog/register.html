@@ -3,6 +3,27 @@
 ثبت نام در ویکو چند کبیر
     {% endblock %}
 {% block content %}
+
+{% if error_pass %}
+        <div class="container" id="errors">
+            <div class="alert alert-danger alert-dismissible fade show text-right" role="alert" dir="rtl">
+              گذرواژه و تکرار گذرواژه یکسان نیستند
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+        </div>
+    {% elif error_user %}
+    <div class="container" id="errors">
+            <div class="alert alert-danger alert-dismissible fade show text-right" role="alert" dir="rtl">
+              نام کاربری شما در سیستم موجود است
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+        </div>
+     {% endif %}
+	 
 <form class="d-felx container w-50 justify-content-center validate-form" id="register_form" action="/register/" method="post">
                     {% csrf_token %}
 					<div class="validate-input" data-validate="First Name is required">
