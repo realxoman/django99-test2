@@ -10,6 +10,8 @@ from django.db.models.signals import post_save
 
 
 class Products(models.Model):
-    title = models.CharField(max_length=50)
+    name = models.CharField(max_length=50)
     quantity = models.IntegerField()
     price = models.IntegerField()
+    def __str__(self):
+        return self.name

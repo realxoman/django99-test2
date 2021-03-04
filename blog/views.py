@@ -76,10 +76,10 @@ def panel(request):
 
 def addproduct(request):
     if request.method == 'POST':
-        title = request.POST.get("title")
+        name = request.POST.get("name")
         quantity = request.POST.get("quantity")
         price = request.POST.get("price")
-        product = Products(title=title,quantity=quantity,price=price)
+        product = Products(name=name,quantity=quantity,price=price)
         product.save()
         return render(request, "blog/product-success.html")
     return render(request, "blog/addproduct.html")
