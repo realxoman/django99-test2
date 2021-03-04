@@ -1,0 +1,44 @@
+{% extends 'blog/base.html' %}
+    {% block title %}
+فرم تماس با ما
+    {% endblock %}
+{% block content %}
+<style>
+        .container{
+            max-width: 940px;
+            }
+    .form-control:focus{
+        border-color: #2e3133;
+        box-shadow: 1px 1px 1px  #2e3133 !important;
+    }
+    </style>
+    <div class="container mb-2 mt-5">
+        <div class="row mx-auto">
+            <div class="col">
+                <div class="card">
+                    <div class="card-header bg-secondary text-white text-center"><i class="fa fa-envelope"></i> Contact Us
+                    </div>
+                    <div class="card-body">
+                        <form id="contact_us_form" action="/contact/" method="post">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label for="title">موضوع</label>
+                                <input type="text" name="title" class="form-control" id="title" aria-describedby="emailHelp" placeholder="عنوان را وارد کنید" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">ایمیل</label>
+                                <input type="email" name="email" class="form-control" id="email" aria-describedby="email" placeholder="ایمیل شما" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">پیام</label>
+                                <textarea class="form-control" id="message" name="text" rows="6" minlength="10" maxlength="250" placeholder="یک پیام بین حداقل ۱۰ و حداکثر ۲۵۰ کاراکتر وارد کنید" required></textarea>
+                            </div>
+                            <div class="d-flex">
+                            <button type="submit" class="btn btn-outline-success text-center mx-auto" style="width: 150px;">ارسال</button></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

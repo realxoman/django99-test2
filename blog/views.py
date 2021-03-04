@@ -2,6 +2,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.shortcuts import render
 from django.http import HttpResponseRedirect, HttpResponse
+from django.core.mail import send_mail, BadHeaderError
 
 
 # Create your views here.
@@ -53,3 +54,18 @@ def login_(request):
 def logout_(request):
     logout(request)
     return HttpResponseRedirect("/")
+
+def contact(request):
+    if request.method == 'POST':
+        title = request.POST.get("title")
+        text = request.POST.get("text")
+        email = request.POST.get("email")
+        my_email = EmailMessage(
+                title,
+                f"{text}  {email}",
+                'VcoChand' + '<webelopers.esband@gmail.com>',
+                ["webe21lopers@gmail.com"],
+            )
+        my_email.send()
+        return render(request, "blog/contact-success.html")
+    return render(request, "blog/contact.html")
