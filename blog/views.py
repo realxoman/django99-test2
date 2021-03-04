@@ -75,11 +75,18 @@ def contact(request):
         return render(request, "blog/contact-success.html")
     return render(request, "blog/contact.html")
 
+register = template.Library() 
+@register.filter(name='has_group') 
+def has_group(user, group_name):
+    return user.groups.filter(name=group_name).exists()
+
 def panel(request):
     if request.method == 'POST':
         seller.user_set.add(request.user)
         return render(request, "blog/seller-done.html")
     return render(request, "blog/panel.html")
+    
+
 
 def addproduct(request):
     if request.method == 'POST':
@@ -95,13 +102,6 @@ def addproduct(request):
     
 seller, created = Group.objects.get_or_create(name='seller')
 
-
-register = template.Library()
-
-@register.filter(name='has_group')
-def has_group(user, group_name):
-    group = Group.objects.get(name=group_name)
-    return True if group in user.groups.all() else False
 
 
 
