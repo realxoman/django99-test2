@@ -1,0 +1,34 @@
+{% extends 'blog/base.html' %}
+{% block title %}
+ورود در ویکو چند کبیر
+{% endblock %}
+{% block content %}
+{% if error %}
+<div class="container">
+    <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        <strong>Oh Shit!!</strong> Your username or password is incorrect! {{error}}
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+    </div>
+</div>
+{% endif %}
+<form class="d-felx container w-50 justify-content-center validate-form" id="login_form" action="/login/" method="post">
+    {% csrf_token %}
+    <div class="wrap-input100 validate-input" data-validate="Username is required">
+        <label class="my-2">نام کاربری</label>
+        <input name="username" class="form-control" type="text" placeholder="یک نام کاربری وارد کنید">
+    </div>
+
+    <div class="wrap-input100 validate-input" data-validate="Password is required">
+        <label class="my-2">رمز عبور</label>
+        <input class="form-control" type="password" name="password" placeholder="رمز عبورتان را وارد کنید">
+    </div>
+
+    <div class="m-4 text-left">
+        <button class="btn btn-primary" type="submit" name="submit">
+            ورود
+        </button>
+    </div>
+</form>
+{% endblock %}

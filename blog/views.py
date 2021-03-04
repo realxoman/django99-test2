@@ -1,7 +1,7 @@
-from django.shortcuts import render
-from django.http import HttpResponseRedirect, HttpResponse
 from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
+from django.shortcuts import render
+from django.http import HttpResponseRedirect, HttpResponse
 
 
 # Create your views here.
@@ -9,6 +9,7 @@ from django.contrib.auth.models import User
 
 def home(request):
     return render(request,"blog/home.html")
+
 def register(request):
     error_pass = False
     error_user = False
@@ -33,3 +34,22 @@ def register(request):
 
         return HttpResponseRedirect("/")
     return render(request, "blog/register.html")
+
+def login_(request):
+    error = False
+    if request.method == 'POST':
+        username = request.POST.get("username")
+        password = request.POST.get("password")
+        user = authenticate(request, username=username, password=password)
+        if user is not None:
+            login(request, user)
+            return HttpResponseRedirect("/")
+        elif user is None:
+            error = True
+    return render(request, "blog/login.html", {
+        "error": error
+    })
+
+def logout_(request):
+    logout(request)
+    return HttpResponseRedirect("/")

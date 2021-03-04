@@ -3,47 +3,41 @@
 ثبت نام در ویکو چند کبیر
     {% endblock %}
 {% block content %}
-<form class="login100-form validate-form" id="register_form" action="/register/" method="post">
+<form class="d-felx container w-50 justify-content-center validate-form" id="register_form" action="/register/" method="post">
                     {% csrf_token %}
-					<div class="wrap-input100 validate-input m-b-26" data-validate="First Name is required">
-						<span class="label-input100">First name</span>
-						<input name="first_name" class="input100" type="text" placeholder="Enter first name">
-						<span class="focus-input100"></span>
+					<div class="validate-input" data-validate="First Name is required">
+						<label class="my-2">نام شما</label>
+						<input name="first_name" class="form-control" type="text" placeholder="نام خود را وارد کنید">
 					</div>
 
-                    <div class="wrap-input100 validate-input m-b-26" data-validate="Last Name is required">
-						<span class="label-input100">Last name</span>
-						<input name="last_name" class="input100" type="text" placeholder="Enter last name">
-						<span class="focus-input100"></span>
+                    <div class="wrap-input100 validate-input" data-validate="Last Name is required">
+						<label class="my-2">نام خانوادگی شما</label>
+						<input name="last_name" class="form-control" type="text" placeholder="نام خانوادگی خود را وارد کنید">
 					</div>
 
-                    <div class="wrap-input100 validate-input m-b-26" data-validate="Username is required">
-						<span class="label-input100">Username</span>
-						<input name="username" class="input100" type="text" placeholder="Enter username">
-						<span class="focus-input100"></span>
+                    <div class="wrap-input100 validate-input" data-validate="Username is required">
+						<label class="my-2">نام کاربری</label>
+						<input name="username" class="form-control" type="text" placeholder="یک نام کاربری وارد کنید">
 					</div>
 
-                    <div class="wrap-input100 validate-input m-b-26" data-validate="Email is required">
-						<span class="label-input100">Email</span>
-						<input name="email" class="input100" type="email" placeholder="Enter email">
-						<span class="focus-input100"></span>
+                    <div class="wrap-input100 validate-input" data-validate="Email is required">
+						<label class="my-2">ایمیل</label>
+						<input name="email" class="form-control" type="email" placeholder="ایمیل شما">
 					</div>
 
-					<div class="wrap-input100 validate-input m-b-18" data-validate = "Password is required">
-						<span class="label-input100">Password</span>
-						<input class="input100" type="password" name="password1" placeholder="Enter password">
-						<span class="focus-input100"></span>
+					<div class="wrap-input100 validate-input" data-validate = "Password is required">
+						<label class="my-2">رمز عبور</label>
+						<input class="form-control" type="password" name="password1" placeholder="رمز عبورتان را وارد کنید">
 					</div>
 
-                    <div class="wrap-input100 validate-input m-b-18" data-validate = "Password repeat is required">
-						<span class="label-input100">Confirm Password</span>
-						<input class="input100" type="password" name="password2" placeholder="Enter password again">
-						<span class="focus-input100"></span>
+                    <div class="wrap-input100 validate-input" data-validate = "Password repeat is required">
+						<label class="my-2">تایید رمز عبور</label>
+						<input class="form-control" type="password" name="password2" placeholder="رمز عبورتان را وارد کنید">
 					</div>
 
-					<div class="container-login100-form-btn">
-						<button class="login100-form-btn" type="submit" name="submit">
-							Sign Up
+					<div class="m-4 text-left">
+						<button class="btn btn-primary" type="submit" name="submit">
+							ثبت نام کنید
 						</button>
 					</div>
 				</form>
