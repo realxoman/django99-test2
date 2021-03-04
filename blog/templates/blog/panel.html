@@ -4,12 +4,18 @@
 {% endblock %}
 {% block content %}
 
-<div class="d-felx container w-50 justify-content-center">
+<div class="d-felx container w-75 justify-content-center my-5">
 ‌{% if user.is_authenticated %}
-{% if user.is_seller %}
-<a id="make_new_product" href="/addproduct/">
-ورود به صفحه ساخت محصول
-  </a>
+{% if kazem %}
+
+<div class="row bg-dark p-3 rounded">
+<h3 class="h3 col-12 text-center py-3">پنل کاربری</h3>
+<a class="btn bg-success text-white col-6 py-4" id="make_new_product" href="/addproduct/">
+ورود به صفحه ساخت محصول</a>
+<a class="btn bg-danger text-white col-6 py-4" id="my_products" href="/myproducts/">
+ورود به صفحه محصولات</a>
+
+</div>
   
 {% else %}
 
@@ -22,7 +28,7 @@
         box-shadow: 1px 1px 1px  #2e3133 !important;
     }
     </style>
-    <div class="container mb-2 mt-5">
+    <div class="container mb-5 mt-5">
         <div class="row mx-auto">
             <div class="col">
                 <div class="card">

@@ -1,18 +1,16 @@
 from django.contrib.auth import authenticate, login, logout
-from django.contrib.auth.models import User,Group,Permission
+from django.contrib.auth.models import User,Group
 from django.shortcuts import render
 from django.http import HttpResponseRedirect, HttpResponse
-from django.core.mail import EmailMessage,send_mail
-from django.db.models import Q
+from django.core.mail import send_mail
 from .models import Products
-from django import template
-from django.contrib.contenttypes.models import ContentType
-
+from django.contrib.auth import get_user_model
+User = get_user_model()
 
 
 # Create your views here.
 
-
+seller, created = Group.objects.get_or_create(name='seller')
 
 def home(request):
     return render(request,"blog/home.html")
@@ -75,16 +73,21 @@ def contact(request):
         return render(request, "blog/contact-success.html")
     return render(request, "blog/contact.html")
 
-register = template.Library() 
-@register.filter(name='has_group') 
-def has_group(user, group_name):
-    return user.groups.filter(name=group_name).exists()
 
 def panel(request):
+    kazem = False
+    if request.user.groups.filter(name = seller).exists():
+        kazem = True
+    else:
+        kazem = False
     if request.method == 'POST':
         seller.user_set.add(request.user)
-        return render(request, "blog/seller-done.html")
-    return render(request, "blog/panel.html")
+        return render(request, "blog/seller-done.html",{
+        "kazem": kazem
+    })
+    return render(request, "blog/panel.html",{
+        "kazem": kazem
+    })
     
 
 
@@ -93,21 +96,18 @@ def addproduct(request):
         name = request.POST.get("name")
         quantity = request.POST.get("quantity")
         price = request.POST.get("price")
-        product = Products(name=name,quantity=quantity,price=price)
+        author = request.user.username
+        product = Products(name=name,quantity=quantity,price=price,author=author)
         product.save()
         return render(request, "blog/product-success.html")
     return render(request, "blog/addproduct.html")
 
 
     
-seller, created = Group.objects.get_or_create(name='seller')
+def productslistuser(request):
+    user_articles = Products.objects.filter(whopost=id).values('whopost')
+    return render(request, "blog/userproducts.html",{"user_articles":user_articles})
 
-
-register = template.Library()
-
-@register.filter(name='has_group')
-def has_group(user, group_name):
-    group = Group.objects.get(name=group_name)
-    return True if group in user.groups.all() else False
-
-
+def productslist(request):
+    productslist = Products.objects.all()
+    return render(request, "blog/products.html",{"productslist":productslist})
