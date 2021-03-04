@@ -65,7 +65,7 @@ def contact(request):
                 title,
                 f"{text}  {email}",
                 'VcoChand' + '<ssckiau.es@gmail.com>',
-                ["fromiran98@gmail.com"],
+                ["webe21lopers@gmail.com"],
             )
         my_email.send()
         return render(request, "blog/contact-success.html")
