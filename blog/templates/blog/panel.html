@@ -5,15 +5,49 @@
 {% block content %}
 
 <div class="d-felx container w-50 justify-content-center">
-‌
+‌{% if user.is_authenticated %}
 
-
+{% if user.is_seller %}
 <a id="make_new_product" href="/addproduct/">
-ورود به پنل کاربری
+ورود به صفحه ساخت محصول
   </a>
+  
+{% else %}
+
+<style>
+        .container{
+            max-width: 940px;
+            }
+    .form-control:focus{
+        border-color: #2e3133;
+        box-shadow: 1px 1px 1px  #2e3133 !important;
+    }
+    </style>
+    <div class="container mb-2 mt-5">
+        <div class="row mx-auto">
+            <div class="col">
+                <div class="card">
+                    <div class="card-header bg-secondary text-white text-center"><i class="fa fa-envelope"></i> ساخت محصول
+                    </div>
+                    <div class="card-body">
+                        <form id="become_seller" action="/panel/" method="post">
+                            {% csrf_token %}
+                            <div class="d-flex my-2">
+                            <button type="submit" class="btn btn-outline-success text-center mx-auto" style="width: 150px;"> فروشنده شوید </button></div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
+{% endif %}
+{% else %}
+شما وارد نشده اید.
+{% endif %}
 
 </div>
+
 
 {% endblock %}

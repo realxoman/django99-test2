@@ -1,0 +1,23 @@
+{% extends "blog/base.html" %}
+{% block content %}
+
+{% if request.user.is_seller %}
+    <div id="error">
+    <div class="alert alert-success text-right text-center mx-auto mt-4 w-50" role="alert" dir="rtl">
+شما فروشنده هستید
+
+<br>
+</div>
+    </div>
+    {% else %}
+<div id="done">
+    <div class="alert alert-success text-right text-center mx-auto mt-4 w-50" role="alert" dir="rtl">
+با موفقیت فروشنده شدید
+<br>
+
+                                <a href="/addproduct/" class="my-3 btn btn-outline-success text-center mx-auto" style="width: 150px;"> ساخت محصول جدید </a>
+
+</div>
+    </div>
+    {% endif %}
+{% endblock %}
