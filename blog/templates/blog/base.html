@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>
+    {% block title %}
+    {% endblock %}
+    </title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/css/bootstrap.min.css" integrity="sha384-DhY6onE6f3zzKbjUPRc2hOzGAdEf4/Dz+WJwBvEYL/lkkIsI3ihufq9hk9K4lVoK" crossorigin="anonymous">
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container-xl ax-inner my-xl-5">
+        <div id="axapp" class="ax-inner-content">
+
+            <!--  Navigation -->
+            <div class="navbar navbar-expand-lg ax-nav row d-flex justify-content-space-around align-items-center py-4">
+                <div class="col-6 mx-auto col-md-4 ax-nav-logo-section d-flex justify-content-start mr-4">
+                    <div class="ax-nav-logo ax-icon-logo" :class="{'ax-logo-fixed' : logo_fixed}"></div>
+                </div>
+                <div class="col-2 d-md-none d-flex mx-auto col-md-4 ax-nav-logo-section">
+                    <div class="ax-nav-logo"></div>
+                </div>
+                <button @click="ax_fixed_logo()" class="col col-md-4 d-lg-none ax-menu-button btn collapsed" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="ax-icon-menu"></span>
+                </button>
+                <div class="col-lg d-lg-flex justify-content-end collapse navbar-collapse ax-mobile" id="navbar">
+                    <ul class="navbar-nav ax-list-desktop">
+                        <li class="nav-item"><a id="login">ورود</a></li>
+                        <li class="nav-item"><a id="register">ثبت نام</a></li>
+                        <li class="nav-item"><a id="homepage" href="/">صفحه اصلی</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- End Navigation -->
+
+
+          
+        {% block content %}
+
+        {% endblock %}
+
+        <div class="ax-foot-hr mw-100"></div>
+            <footer class="w-100 h-100 row align-items-center">
+                <div class="col-md-4 col-12 d-lg-block d-none mr-5 my-3">
+                    <a href="#" class="btn ax-foot-design">وی کو چند</a>
+                </div>
+                <div class="ax-social col-md-4 col-12 d-flex justify-content-center align-items-center mx-lg-0 mx-auto">
+ما برای راه سازی آمدیم
+                </div>
+                <a href="#" class="col-12 ax-foot-mobile-btn d-lg-none d-flex justify-content-center my-3">وی کو چند</a>
+                
+            </footer>
+    </div>
+
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/5.0.0-alpha2/js/bootstrap.bundle.min.js" integrity="sha384-BOsAfwzjNJHrJ8cZidOg56tcQWfp6y72vEJ8xQ9w6Quywb24iOsW913URv1IS4GD" crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/vue@3.0.3/dist/vue.global.prod.js"></script>
+    <script src="assets/js/app.js"></script>
+</body>
+</html>
