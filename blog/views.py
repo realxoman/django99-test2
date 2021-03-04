@@ -2,7 +2,8 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.shortcuts import render
 from django.http import HttpResponseRedirect, HttpResponse
-from django.core.mail import send_mail, BadHeaderError
+from django.core.mail import EmailMessage
+from django.db.models import Q
 
 
 # Create your views here.
@@ -63,8 +64,8 @@ def contact(request):
         my_email = EmailMessage(
                 title,
                 f"{text}  {email}",
-                'VcoChand' + '<webelopers.esband@gmail.com>',
-                ["webe21lopers@gmail.com"],
+                'VcoChand' + '<ssckiau.es@gmail.com>',
+                ["fromiran98@gmail.com"],
             )
         my_email.send()
         return render(request, "blog/contact-success.html")

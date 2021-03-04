@@ -587,10 +587,10 @@ body {
         }
         .ax-social{
             height: 50px;
-            width: 300px;
+            width: 350px;
             border-radius: 30px;
             background-color:$grey3;
-            direction: ltr;
+            transition: 0.5s ease;
             .ax-social-icon{
                 margin: 10px;
                 font-size: 20px;
@@ -598,11 +598,19 @@ body {
                 text-decoration: none;
                 &:hover,&:active,&:focus{
                     color: $mytheme;
+                    transition: 0.5s ease;
                 }
             }
         }
     }
 
+}
+.foot-ax-heart{
+  transition: 0.5s ease;
+}
+.ax-social:hover .foot-ax-heart{
+  padding: 0 10px;
+  transform: scale(1.5);
 }
 .ax-title-h2{
     font-size: 25px;

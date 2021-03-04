@@ -639,10 +639,11 @@ body {
 
 .ax-inner footer .ax-social {
   height: 50px;
-  width: 300px;
+  width: 350px;
   border-radius: 30px;
   background-color: #323232;
-  direction: ltr;
+  -webkit-transition: 0.5s ease;
+  transition: 0.5s ease;
 }
 
 .ax-inner footer .ax-social .ax-social-icon {
@@ -654,6 +655,19 @@ body {
 
 .ax-inner footer .ax-social .ax-social-icon:hover, .ax-inner footer .ax-social .ax-social-icon:active, .ax-inner footer .ax-social .ax-social-icon:focus {
   color: #1E90FF;
+  -webkit-transition: 0.5s ease;
+  transition: 0.5s ease;
+}
+
+.foot-ax-heart {
+  -webkit-transition: 0.5s ease;
+  transition: 0.5s ease;
+}
+
+.ax-social:hover .foot-ax-heart {
+  padding: 0 10px;
+  -webkit-transform: scale(1.5);
+          transform: scale(1.5);
 }
 
 .ax-title-h2 {
