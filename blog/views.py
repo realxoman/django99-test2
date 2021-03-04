@@ -4,6 +4,7 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect, HttpResponse
 from django.core.mail import EmailMessage,send_mail
 from django.db.models import Q
+from .models import Products
 
 
 # Create your views here.
@@ -72,3 +73,13 @@ def contact(request):
 
 def panel(request):
     return render(request, "blog/panel.html")
+
+def addproduct(request):
+    if request.method == 'POST':
+        title = request.POST.get("title")
+        quantity = request.POST.get("quantity")
+        price = request.POST.get("price")
+        product = Products(title=title,quantity=quantity,price=price)
+        product.save()
+        return render(request, "blog/product-success.html")
+    return render(request, "blog/addproduct.html")
