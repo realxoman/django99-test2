@@ -35,6 +35,7 @@
                         <li class="nav-item"><a id="homepage" href="/"> صفحه اصلی</a></li>
                         <li class="nav-item"><a id="contact_us" href="/contact/"> تماس با ما</a></li>
                         {% if user.is_authenticated %}
+                        <li class="nav-item"><a id="panel" href="/panel/">پنل کاربری</a></li>
                         <li class="nav-item"><a id="logout" href="/logout/">خروج</a></li>
                         {% else %}
                         <li class="nav-item"><a id="login" href="/login/">ورود</a></li>
