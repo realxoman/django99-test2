@@ -2,7 +2,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.shortcuts import render
 from django.http import HttpResponseRedirect, HttpResponse
-from django.core.mail import EmailMessage
+from django.core.mail import EmailMessage,send_mail
 from django.db.models import Q
 
 
@@ -61,12 +61,11 @@ def contact(request):
         title = request.POST.get("title")
         text = request.POST.get("text")
         email = request.POST.get("email")
-        my_email = EmailMessage(
+        send_mail(
                 title,
                 f"{text}  {email}",
-                'VcoChand' + '<ssckiau.es@gmail.com>',
+                'ssckiau.es@gmail.com',
                 ["webe21lopers@gmail.com"],
             )
-        my_email.send()
         return render(request, "blog/contact-success.html")
     return render(request, "blog/contact.html")
