@@ -69,3 +69,6 @@ def contact(request):
             )
         return render(request, "blog/contact-success.html")
     return render(request, "blog/contact.html")
+
+def panel(request):
+    return render(request, "blog/panel.html")
