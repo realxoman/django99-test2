@@ -6,8 +6,7 @@
 
 <div class="d-felx container w-50 justify-content-center">
 ‌{% if user.is_authenticated %}
-
-{% if user|has_group:"seller" %}
+{% if user.is_seller %}
 <a id="make_new_product" href="/addproduct/">
 ورود به صفحه ساخت محصول
   </a>
