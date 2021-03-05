@@ -7,10 +7,11 @@ from .models import Products,UserProducts
 
 
 # Create your views here.
-
-seller, created = Group.objects.get_or_create(name='seller')
+def seller():
+    seller, created = Group.objects.get_or_create(name='seller')
 
 def home(request):
+    seller()
     return render(request,"blog/home.html")
 
 def registers(request):
