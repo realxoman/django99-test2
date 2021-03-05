@@ -84,12 +84,8 @@ def panel(request):
         kazem = False
     if request.method == 'POST':
         seller.user_set.add(request.user)
-        return render(request, "blog/seller-done.html",{
-        "kazem": kazem
-    })
-    return render(request, "blog/panel.html",{
-        "kazem": kazem
-    })
+        return render(request, "blog/seller-done.html",{"kazem": kazem})
+    return render(request, "blog/panel.html",{"kazem": kazem})
     
 
 
