@@ -1,46 +1,25 @@
 {% extends 'blog/base.html' %}
-    {% block title %}
-اضافه کردن محصول
-    {% endblock %}
+{% load i18n %}
+
 {% block content %}
-<style>
-        .container{
-            max-width: 940px;
-            }
-    .form-control:focus{
-        border-color: #2e3133;
-        box-shadow: 1px 1px 1px  #2e3133 !important;
-    }
-    </style>
-    <div class="container mb-5 mt-5">
+    <br>
+    <br>
+    <br>
+<div class="container mb-5 mt-5">
         <div class="row mx-auto">
             <div class="col">
                 <div class="card">
                     <div class="card-header bg-secondary text-white text-center"><i class="fa fa-envelope"></i> ساخت محصول
                     </div>
                     <div class="card-body">
-                        <form id="make_product" action="/editproduct/" method="post">
-                            {% csrf_token %}
-                            <div class="form-group">
-                                <label for="name">نام محصول</label>
-                                <input type="text" name="name" class="form-control" id="name" aria-describedby="nameproduct" placeholder="عنوان را وارد کنید" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="quantity">موجودی</label>
-                                <input type="number" name="quantity" class="form-control" id="quantity" aria-describedby="quantity" placeholder="موجودی" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="price">قیمت</label>
-                                <input type="number" name="price" class="form-control" id="price" aria-describedby="price" placeholder="قیمت محصول" required>
-                            </div>
-                            <div class="d-flex my-2">
-                            <button type="submit" class="btn btn-outline-success text-center mx-auto" style="width: 150px;">ساخت محصول</button></div>
-                        </form>
-                    </div>
+    <form method="post" action="" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="btn btn-primary" type="submit">{% trans "save" %}</bottun>
+    </form>
+ </div>
                 </div>
             </div>
         </div>
     </div>
-
-
-{% endblock %}
+{% endblock content %}

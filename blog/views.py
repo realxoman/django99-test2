@@ -120,3 +120,16 @@ def productslist(request):
         return render(request, "blog/products.html", {"search_list": search_list })
     return render(request, "blog/products.html",{"productslist":productslist})
 
+from django.shortcuts import render , get_object_or_404
+from .forms import productform
+
+def editproduct(request , id=None):
+    post = get_object_or_404(Products, id=id)
+
+    editform = productform(request.POST or None , request.FILES or None, instance=post)
+    if editform.is_valid():
+        editform.save()
+    context = {
+        'form': editform,
+    }
+    return render(request, 'blog/editproduct.html',context)

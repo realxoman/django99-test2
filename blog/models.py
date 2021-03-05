@@ -9,7 +9,7 @@ from django.contrib.auth.models import User
 
 
 class Products(models.Model):
-    product_id = models.AutoField(primary_key=True)
+    id = models.AutoField(primary_key=True)
     author = models.ForeignKey(User, null=True, blank=True,on_delete=models.CASCADE)
     name = models.CharField(max_length=50)
     quantity = models.IntegerField()

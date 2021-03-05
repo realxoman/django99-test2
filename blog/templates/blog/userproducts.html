@@ -27,24 +27,6 @@
 
 
 
-
-
-            {% for productlist in search_lists %}
-
-            <div class="col-md-4 col-12 {{ productlist.name }}_{{ productlist.author.username }}">
-                <div class="ax-text-products ax-icon-marketing"></div>
-                <h4>{{ productlist.name }}</h4>
-                <h4>{{ productlist.product_id }}</h4>
-                <div>{{ productlist.quantity }}</div>
-                <div>{{ productlist.price }}</div>
-                <div>{{ productlist.author.first_name }}</div>
-                <div>{{ productlist.author.last_name }}</div>
-
-
-            </div>
-
-
-            {% endfor %}
             {% for user_product in user_products %}
 
             <div class="col-md-4 col-12 {{ user_product.name }}_{{ user_product.author.username }}">
@@ -56,8 +38,8 @@
                 <div>{{ user_product.author.last_name }}</div>
 
 
-                <a id="edit_{{ productlist.name }}_{{ productlist.author.username }}" href="/edit/">ویرایش محصول</a>
-                <a id="delete_{{ productlist.name }}_{{ productlist.author.username }}" href="/delete/">حذف محصول</a>
+                <a id="edit_{{ productlist.name }}_{{ productlist.author.username }}" href="{% url 'blog:editproduct' id=user_product.id %}">ویرایش محصول</a>
+
             </div>
 
 
