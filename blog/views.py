@@ -8,6 +8,8 @@ from django.db.models import Q
 from django.urls import reverse
 
 
+from django.shortcuts import render , get_object_or_404
+from .forms import productform
 
 # Create your views here.
 
@@ -112,12 +114,10 @@ def productslist(request):
     productslist = Products.objects.all()
     if request.method == "POST":
         query = request.POST.get("title")
-        search_list = Products.objects.filter(name__icontains=query)
+        search_list = Products.objects.filter(name__contains=query)
         return render(request, "blog/search.html", {"search_list": search_list })
     return render(request, "blog/products.html",{"productslist":productslist})
 
-from django.shortcuts import render , get_object_or_404
-from .forms import productform
 
 def editproduct(request , id=None):
     post = get_object_or_404(Products, id=id)
