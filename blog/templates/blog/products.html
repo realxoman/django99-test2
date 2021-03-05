@@ -29,26 +29,6 @@
         <div class="row d-flex justify-content-center text-center" id="all_products">
 
 
-
-
-
-            {% for productlist in search_list %}
-
-            <div class="col-md-4 col-12 {{ productlist.name }}_{{ productlist.author.username }}">
-                <div class="ax-text-products ax-icon-marketing"></div>
-                <h4>{{ productlist.name }}</h4>
-                <div>{{ productlist.quantity }}</div>
-                <div>{{ productlist.price }}</div>
-                <div>{{ productlist.author.first_name }}</div>
-                <div>{{ productlist.author.last_name }}</div>
-
-
-            </div>
-
-
-            {% endfor %}
-
-
             {% for productlist in productslist %}
 
             <div class="col-md-4 col-12 {{ productlist.name }}_{{ productlist.author.username }}">

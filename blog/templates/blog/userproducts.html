@@ -39,6 +39,7 @@
 
 
                 <a id="edit_{{ user_product.name }}_{{ user_product.author.username }}" href="{% url 'blog:editproduct' id=user_product.id %}">ویرایش محصول</a>
+ <br>               <a id="delete_{{ user_product.name }}_{{ user_product.author.username }}" href="{% url 'blog:deleteproduct' id=user_product.id %}">حذف محصول</a>
 
             </div>
 

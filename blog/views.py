@@ -134,3 +134,8 @@ def editproduct(request , id=None):
         'form': editform,
     }
     return render(request, 'blog/editproduct.html',context)
+
+def deleteproduct(request , id=None):
+    post = get_object_or_404(Products, id=id)
+    if post.delete():
+        return HttpResponseRedirect(reverse('blog:productslistuser'))
