@@ -5,7 +5,7 @@ from django.http import HttpResponseRedirect, HttpResponse
 from django.core.mail import send_mail
 from .models import Products
 from django.db.models import Q
-
+from django.urls import reverse
 
 
 
@@ -129,6 +129,7 @@ def editproduct(request , id=None):
     editform = productform(request.POST or None , request.FILES or None, instance=post)
     if editform.is_valid():
         editform.save()
+        return HttpResponseRedirect(reverse('blog:productslistuser'))
     context = {
         'form': editform,
     }
