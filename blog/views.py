@@ -108,7 +108,7 @@ def productslistuser(request):
     user_products = Products.objects.filter(author=request.user)
     if request.method == "POST":
         query = request.POST.get("title")
-        search_list = Products.objects.filter(Q(name__icontains=query),author=request.user)
+        search_lists = Products.objects.filter(Q(name__icontains=query),author=request.user)
         return render(request, "blog/products.html", {"search_lists": search_lists })
     return render(request, "blog/userproducts.html",{"user_products":user_products})
 
