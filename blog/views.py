@@ -117,7 +117,7 @@ def productslist(request):
     if request.method == "POST":
         query = request.POST.get("title")
         search_list = Products.objects.filter(Q(name__icontains=query))
-        return render(request, "blog/products.html", {"search_list": search_list })
+        return render(request, "blog/search.html", {"search_list": search_list })
     return render(request, "blog/products.html",{"productslist":productslist})
 
 from django.shortcuts import render , get_object_or_404
