@@ -4,7 +4,7 @@ from django.shortcuts import render
 from django.http import HttpResponseRedirect, HttpResponse
 from django.core.mail import send_mail
 from .models import Products
-
+from django.db.models import Q
 
 
 
@@ -110,6 +110,9 @@ def productslistuser(request):
 
 def productslist(request):
     productslist = Products.objects.all()
+    if request.method == "POST":
+        query = request.POST.get("title")
+        search_list = Products.objects.filter(Q(name__icontains=query))
+        return render(request, "blog/products.html", {"search_list": search_list })
     return render(request, "blog/products.html",{"productslist":productslist})
-
 

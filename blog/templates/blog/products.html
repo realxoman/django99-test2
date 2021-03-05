@@ -4,30 +4,67 @@
 {% endblock %}
 {% block content %}
 <style>
-.ax-text-products{
-    font-size:70px;
-}
+    .ax-text-products {
+        font-size: 70px;
+    }
 </style>
+
+
 <div class="d-felx container justify-content-center my-5">
+
+    <div class="col-md-4 mx-auto mb-5">
+        <form action="" method="POST" id="search_products" dir="rtl" class="my-2">
+            {% csrf_token %}
+            <div class="form-group">
+                <input type="text" class="form-control" name="title" placeholder="جست و جو در محصولات">
+            </div>
+            <div class="d-flex my-2">
+                <button type="submit" class="btn btn-success text-center mx-auto" style="width: 150px;">جست و
+                    جو</button></div>
+        </form>
+    </div>
+
     <div class="row bg-dark p-3 rounded">
         <h3 class="h3 col-12 text-center py-3">محصولات</h3>
         <div class="row d-flex justify-content-center text-center" id="all_products">
-{% for productlist in productslist %}
-
-<div class="col-md-4 col-12 {{ productlist.name }}_{{ productlist.author.username }}">
-                    <div class="ax-text-products ax-icon-marketing"></div>
-<h4>{{ productlist.name }}</h4>
-<div>{{ productlist.quantity }}</div>
-<div>{{ productlist.price }}</div>
-<div>{{ productlist.author.first_name }}</div>
-<div>{{ productlist.author.last_name }}</div>
 
 
-</div>
 
 
-{% endfor %}
-</div>
+
+            {% for productlist in search_list %}
+
+            <div class="col-md-4 col-12 {{ productlist.name }}_{{ productlist.author.username }}">
+                <div class="ax-text-products ax-icon-marketing"></div>
+                <h4>{{ productlist.name }}</h4>
+                <div>{{ productlist.quantity }}</div>
+                <div>{{ productlist.price }}</div>
+                <div>{{ productlist.author.first_name }}</div>
+                <div>{{ productlist.author.last_name }}</div>
+
+
+            </div>
+
+
+            {% endfor %}
+
+
+            {% for productlist in productslist %}
+
+            <div class="col-md-4 col-12 {{ productlist.name }}_{{ productlist.author.username }}">
+                <div class="ax-text-products ax-icon-marketing"></div>
+                <h4>{{ productlist.name }}</h4>
+                <div>{{ productlist.quantity }}</div>
+                <div>{{ productlist.price }}</div>
+                <div>{{ productlist.author.first_name }}</div>
+                <div>{{ productlist.author.last_name }}</div>
+
+
+            </div>
+
+
+            {% endfor %}
+        </div>
     </div>
 </div>
 {% endblock %}
