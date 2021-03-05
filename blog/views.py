@@ -80,8 +80,10 @@ def panel(request):
     kazem = False
     if request.user.groups.filter(name = seller).exists():
         kazem = True
+        print("++++++++++")
     else:
         kazem = False
+        print("-------------")
     if request.method == 'POST':
         seller.user_set.add(request.user)
         return render(request, "blog/seller-done.html",{"kazem": kazem})
