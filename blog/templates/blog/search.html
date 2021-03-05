@@ -34,7 +34,7 @@
 
             {% for productlist in search_list %}
 
-            <div class="col-md-4 col-12 {{ productlist.human_readable_title }}_{{ productlist.author.username }}">
+            <div class="col-md-4 col-12 {{ productlist.name }}_{{ productlist.author.username }}">
                 <div class="ax-text-products ax-icon-marketing"></div>
                 <h4>{{ productlist.name }}</h4>
                 <div>{{ productlist.quantity }}</div>

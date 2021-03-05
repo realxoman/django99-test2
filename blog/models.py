@@ -13,7 +13,5 @@ class Products(models.Model):
     name = models.CharField(max_length=50)
     quantity = models.IntegerField()
     price = models.IntegerField()
-    def human_readable_title(self):
-        return self.name.replace(' ', '_')
     def __str__(self):
         return self.name
