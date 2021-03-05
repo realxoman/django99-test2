@@ -14,7 +14,7 @@
         <div class="row d-flex justify-content-center text-center" id="all_products">
 {% for productlist in productslist %}
 
-<div class="col-md-4 col-12 {{ productlist.name }}_{{ request.user.username }}">
+<div class="col-md-4 col-12 {{ productlist.name }}_{{ productlist.author.username }}">
                     <div class="ax-text-products ax-icon-marketing"></div>
 <h4>{{ productlist.name }}</h4>
 <div>{{ productlist.quantity }}</div>

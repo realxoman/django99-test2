@@ -105,9 +105,8 @@ def addproduct(request):
 
     
 def productslistuser(request):
-    user_products = [c.products for c in UserProducts.objects.all()]
-    productslists = Products.objects.all()
-    return render(request, "blog/userproducts.html",{"user_products":user_products,"productslists":productslists})
+    user_products = Products.objects.filter(author=request.user)
+    return render(request, "blog/userproducts.html",{"user_products":user_products})
 
 def productslist(request):
     productslist = Products.objects.all()
