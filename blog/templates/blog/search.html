@@ -10,6 +10,7 @@
 </style>
 
 
+
 <div class="d-felx container justify-content-center my-5">
 
     <div class="col-md-4 mx-auto mb-5">
@@ -34,13 +35,13 @@
 
             {% for productlist in search_list %}
 
-            <div class="col-md-4 col-12 {{ productlist.human_readable_title }}_{{ productlist.author.username }}">
+             <div class="col-md-3 col-12 ax-bg-products {{ productlist.human_readable_title }}_{{ productlist.author.username }}">
                 <div class="ax-text-products ax-icon-marketing"></div>
-                <h4>{{ productlist.name }}</h4>
-                <div>{{ productlist.quantity }}</div>
-                <div>{{ productlist.price }}</div>
-                <div>{{ productlist.author.first_name }}</div>
-                <div>{{ productlist.author.last_name }}</div>
+                <h4>نام محصول : {{ productlist.name }}</h4>
+                <div>موجودی : {{ productlist.quantity }}</div>
+                <div>قیمت : {{ productlist.price }}</div>
+                <div>نام : {{ productlist.author.first_name }}</div>
+                <div>نام خانوادگی : {{ productlist.author.last_name }}</div>
 
 
             </div>
