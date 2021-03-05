@@ -6,7 +6,7 @@
 
 <div class="d-felx container w-75 justify-content-center my-5">
 ‌{% if user.is_authenticated %}
-{% comment %} {% if kazem %} {% endcomment %}
+{% if kazem %}
 
 <div class="row bg-dark p-3 rounded">
 <h3 class="h3 col-12 text-center py-3">پنل کاربری</h3>
@@ -17,7 +17,7 @@
 
 </div>
   
-{% comment %} {% else %} {% endcomment %}
+{% else %}
 
 <style>
         .container{
@@ -47,7 +47,7 @@
     </div>
 
 
-{% comment %} {% endif %} {% endcomment %}
+{% endif %}
 {% else %}
 شما وارد نشده اید.
 {% endif %}
