@@ -106,17 +106,13 @@ def addproduct(request):
     
 def productslistuser(request):
     user_products = Products.objects.filter(author=request.user)
-    if request.method == "POST":
-        query = request.POST.get("title")
-        search_lists = Products.objects.filter(Q(name__icontains=query),author=request.user)
-        return render(request, "blog/products.html", {"search_lists": search_lists })
     return render(request, "blog/userproducts.html",{"user_products":user_products})
 
 def productslist(request):
     productslist = Products.objects.all()
     if request.method == "POST":
         query = request.POST.get("title")
-        search_list = Products.objects.filter(Q(name__icontains=query))
+        search_list = Products.objects.filter(name__icontains=query)
         return render(request, "blog/search.html", {"search_list": search_list })
     return render(request, "blog/products.html",{"productslist":productslist})
 
