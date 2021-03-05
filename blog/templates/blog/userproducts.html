@@ -38,7 +38,7 @@
                 <div>{{ user_product.author.last_name }}</div>
 
 
-                <a id="edit_{{ productlist.name }}_{{ productlist.author.username }}" href="{% url 'blog:editproduct' id=user_product.id %}">ویرایش محصول</a>
+                <a id="edit_{{ user_product.name }}_{{ user_product.author.username }}" href="{% url 'blog:editproduct' id=user_product.id %}">ویرایش محصول</a>
 
             </div>
 
