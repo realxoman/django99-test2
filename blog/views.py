@@ -3,9 +3,7 @@ from django.contrib.auth.models import User,Group
 from django.shortcuts import render
 from django.http import HttpResponseRedirect, HttpResponse
 from django.core.mail import send_mail
-from .models import Products
-from django.contrib.auth import get_user_model
-User = get_user_model()
+from .models import Products,UserProducts
 
 
 # Create your views here.
@@ -96,8 +94,7 @@ def addproduct(request):
         name = request.POST.get("name")
         quantity = request.POST.get("quantity")
         price = request.POST.get("price")
-        author = request.user.username
-        product = Products(name=name,quantity=quantity,price=price,author=author)
+        product = Products(name=name,quantity=quantity,price=price,author=request.user)
         product.save()
         return render(request, "blog/product-success.html")
     return render(request, "blog/addproduct.html")
@@ -105,8 +102,9 @@ def addproduct(request):
 
     
 def productslistuser(request):
-    user_articles = Products.objects.filter(whopost=id).values('whopost')
-    return render(request, "blog/userproducts.html",{"user_articles":user_articles})
+    user_products = [c.products for c in UserProducts.objects.all()]
+    productslists = Products.objects.all()
+    return render(request, "blog/userproducts.html",{"user_products":user_products,"productslists":productslists})
 
 def productslist(request):
     productslist = Products.objects.all()
