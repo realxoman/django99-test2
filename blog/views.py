@@ -80,21 +80,28 @@ def contact(request):
 def panel(request):
     seller, created = Group.objects.get_or_create(name='seller')
     kazem = False
-    if request.user.groups.filter(name = seller).exists():
+    if request.method == 'POST':
+        seller.user_set.add(request.user)
+        return render(request, "blog/seller-done.html",{"kazem": kazem})
+    if request.user.groups.filter(name = 'seller').exists():
         kazem = True
         print("++++++++++")
     else:
         kazem = False
         print("-------------")
-    if request.method == 'POST':
-        seller.user_set.add(request.user)
-        return render(request, "blog/seller-done.html",{"kazem": kazem})
     return render(request, "blog/panel.html",{"kazem": kazem})
     
 
 
 def addproduct(request):
     seller, created = Group.objects.get_or_create(name='seller')
+    kazem = False
+    if request.user.groups.filter(name = 'seller').exists():
+        kazem = True
+        print(kazem)
+    else:
+        kazem = False
+        print(kazem)
     if request.method == 'POST':
         name = request.POST.get("name")
         quantity = request.POST.get("quantity")
@@ -102,7 +109,7 @@ def addproduct(request):
         product = Products(name=name,quantity=quantity,price=price,author=request.user)
         product.save()
         return render(request, "blog/product-success.html")
-    return render(request, "blog/addproduct.html")
+    return render(request, "blog/addproduct.html",{"kazem": kazem})
 
 
     

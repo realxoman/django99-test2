@@ -3,7 +3,7 @@
 اضافه کردن محصول
     {% endblock %}
 {% block content %}
-{% if kazem %}
+{% if kazem == True %}
 <style>
         .container{
             max-width: 940px;
@@ -44,7 +44,7 @@
     </div>
 {% else %}
 شما فروشنده نیستید
-{% endif %} 
+{% endif %}
 
 
 {% endblock %}
