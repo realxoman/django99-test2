@@ -3,15 +3,17 @@ from django.contrib.auth.models import User,Group
 from django.shortcuts import render
 from django.http import HttpResponseRedirect, HttpResponse
 from django.core.mail import send_mail
-from .models import Products,UserProducts
+from .models import Products
+
+
+
 
 
 # Create your views here.
-def seller():
-    seller, created = Group.objects.get_or_create(name='seller')
+
 
 def home(request):
-    seller()
+    seller, created = Group.objects.get_or_create(name='seller')
     return render(request,"blog/home.html")
 
 def registers(request):
@@ -74,6 +76,7 @@ def contact(request):
 
 
 def panel(request):
+    seller, created = Group.objects.get_or_create(name='seller')
     kazem = False
     if request.user.groups.filter(name = seller).exists():
         kazem = True
@@ -91,6 +94,7 @@ def panel(request):
 
 
 def addproduct(request):
+    seller, created = Group.objects.get_or_create(name='seller')
     if request.method == 'POST':
         name = request.POST.get("name")
         quantity = request.POST.get("quantity")
@@ -110,3 +114,5 @@ def productslistuser(request):
 def productslist(request):
     productslist = Products.objects.all()
     return render(request, "blog/products.html",{"productslist":productslist})
+
+

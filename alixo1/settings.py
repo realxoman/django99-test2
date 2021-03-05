@@ -126,3 +126,4 @@ EMAIL_HOST_PASSWORD = 'riptbjjilwhnovxa'
 EMAIL_HOST_USER = 'ssckiau.es@gmail.com'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
+
